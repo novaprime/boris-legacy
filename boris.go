@@ -20,23 +20,23 @@ const NewMessage = disgord.EvtMessageCreate
 
 func main() {
 	client := disgord.New(disgord.Config{
-		BotToken: "nick-when-is-season-3",
+		BotToken: "nick-when-is-season-4",
 		Logger:   log,
 	})
 	defer client.StayConnectedUntilInterrupted(context.Background())
 
 	responses := []string{
-		"Hi! There is no ETA (estimated time of arrival) set for season 3 yet, we will know when we have one. Till then, please stop spamming that question over and over again to keep things less nerving :)",
+		"Hi! There is no ETA (estimated time of arrival) set for season 4 yet, we will know when we have one. Till then, please stop spamming that question over and over again to keep things less nerving :)",
 		"tomorrow",
 		"when the pigs fly",
-		"Well hello there! Season 3 is still being worked on by our amazing build team and the awful dev! There is no release date yet for you to know of. Thank you for your patience!",
+		"Well hello there! Season 4 is still being worked on by our amazing build team and the amazing dev! There is no release date yet for you to know of. Thank you for your patience!",
 		"yes",
-		"Season 3 is being worked on! Why not check out https://npbe.net in the meantime?",
+		"Season 4 is being worked on! Why not check out https://npbe.net in the meantime?",
 		"liek if cri",
 		"no",
 		"please stop",
 		"mom help me im scared",
-		"what is season 3 and why is he so strong",
+		"what is season 4 and why is he so strong",
 	}
 
 	colors := []int{
@@ -52,7 +52,7 @@ func main() {
 	client.On(disgord.EvtReady, func(s disgord.Session, evt *disgord.Ready) {
 		err := s.UpdateStatus(&disgord.UpdateStatusPayload{
 			Game:   &disgord.Activity{
-				Name:          "season 3 when",
+				Name:          "season 4 when",
 				Type:          2,
 			},
 			Status: disgord.StatusOnline,
@@ -65,7 +65,7 @@ func main() {
 
 	client.On(NewMessage, func(s disgord.Session, evt *disgord.MessageCreate) {
 		text := strings.ToLower(evt.Message.Content)
-		if (strings.Contains(text, "s3") || strings.Contains(text, "season 3")) && strings.Contains(text, "when") {
+		if (strings.Contains(text, "s4") || strings.Contains(text, "season 4")) && strings.Contains(text, "when") {
 			_, _ = evt.Message.Reply(context.Background(), s, &disgord.Embed{
 				Description: responses[rand.Intn(len(responses)-1)],
 				Color:       colors[rand.Intn(len(colors)-1)],
